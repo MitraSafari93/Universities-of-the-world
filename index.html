@@ -1,0 +1,169 @@
+<html>
+
+<head>
+
+
+    <title>My Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="MyAngular.js"></script>
+
+    <script src="ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="ui-bootstrap-tpls-2.5.0.js"></script>
+    <link rel="bootstrap">
+    <link rel="Script/angularjs">
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+
+<body ng-app="myApp" ng-controller="appController">
+    <div ng-controller="myCtrl">
+        <div class="navbar">
+
+        </div>
+        <div class="row">
+
+            <div class="main">
+                <div class="row nav">
+                    <div class="col-md-4 col-md-offset-3">
+                        <form action="" class="search-form">
+                            <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <input type="text" class="form-control" name="search" id="search" placeholder="search"
+                                    ng-model="q.name">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="sort">
+
+                    <div>
+                        Sort by:
+                        <thead>
+                            <tr>
+                                <th> &nbsp; Name<a click="setOrderProperty('name')">
+                                        <span ng-click="collapsed = !collapsed " ng-model="collapsed"
+                                            ng-class="nameSortClass"></span>
+                                    </a></th>
+                                <th> &nbsp; Country<a ng-click="setOrderProperty('country')">
+                                        <span ng-click="collapsed = !collapsed " ng-model="collapsed"
+                                            ng-class="countrySortClass"></span>
+                                    </a></th>
+                            </tr>
+                        </thead>
+                    </div>
+                    <div class="modelShow-body">
+                        <a class="modelShow">
+                            <span class="glyphicon glyphicon-th-list" ng-click="changeClass('list')"></span>
+                        </a>
+                        <a class="modelShow">
+                            <span class="glyphicon glyphicon-th" ng-click="changeClass('')"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="scroll">
+                    <div class="body-loader" ng-show="loading">
+                        <div class="loader">
+                            <span>Loading...</span>
+                        </div>
+                    </div>
+                    <div class=" flex-container-main" ng-class="modelShowClass">
+
+
+                        <div class="uniContainer"
+                            ng-repeat=" x in universities   | startFrom:(currentPage-1)*numPerPage | limitTo:numPerPage track by $index">
+                            <div class="iconUniContainer" ng-class="modelShowClass" >
+                                <div class="icon" ng-class="modelShowClass">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    Favorite
+                                </div>
+                                <div class="icon" ng-class="modelShowClass">
+                                    <span class="glyphicon glyphicon-new-window"></span>
+                                    Detail
+                                </div>
+                                <div class="icon" ng-class="modelShowClass">
+                                    <span class="glyphicon glyphicon-align-justify"></span>
+                                    Website
+                                </div>
+                            </div>
+                            <div class="detailUniContainer">
+                                <h4 style=" font-weight: bold;">{{ x.name }}</h4>
+                                </br>
+                                <div ng-repeat="y in x.web_pages">
+                                    {{y}}
+                                </div>
+                                <text style="color:#78909C; font-size:small;">{{ x.country }}</text>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="side">
+                <div class="flex-container-side ">
+                    <h4 class="head-side">Search Result</h4>
+                    <div class="side-scroll">
+                        <div class="side-content">
+                            <div ng-repeat=" x in content  |  filter:q " ng-click="getCountry(x)" class="row sideRow">
+
+                                <div class="countUni">
+                                    {{(allUni | filter: x.name).length}}
+                                </div>
+                                <div>{{x.name}}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Footer -->
+
+            <div class="footer">
+
+                <div class="container">
+                    <div class="row" data-ng-show="universities.length == 0">
+                        <div class="col-span-12">
+                            No results found
+                        </div>
+                    </div>
+                    <div class="row pagination" data-ng-show="universities.length > 0">
+                        <div class="row pagination-pagesize">
+                            <div class="col-span-12 ">
+                                <uib-pagination ng-model="currentPage" total-items="universities.length"
+                                    max-size="maxSize" items-per-page="numPerPage" boundary-links="true">
+                                </uib-pagination>
+
+                            </div>
+                            
+                            <div class="dropup">
+                                    <button onclick="myFunction()" class="dropbtn" >Page Size<span class="glyphicon glyphicon-triangle-top"></span> </button>
+                                    <div id="myDropup" class="dropup-content">
+                                      <a href="#" ng-click="changeNumPage(4)">4</a>
+                                      <a href="#" ng-click="changeNumPage(10)">10</a>
+                                      <a href="#" ng-click="changeNumPage(20)">20</a>
+                                      <a href="#" ng-click="changeNumPage(30)">30</a>
+                                      <a href="#" ng-click="changeNumPage(100)">100</a>
+                                    </div>
+                                  </div> 
+                        </div>
+
+                        
+
+
+                        <div class="TotalItem"> total items:{{(universities | filter: c).length}}</div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
