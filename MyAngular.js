@@ -43,7 +43,7 @@ myApp.controller('myCtrl', function ($scope, $filter, $http) {
     
     function getAllUni() {
         $scope.$emit('LOAD')
-        $http.get("http://universities.hipolabs.com/search")
+        $http.get("https://cors-anywhere.herokuapp.com/http://universities.hipolabs.com/search")
             .then(function (response) {
                  $scope.allUni = response.data;
                  $scope.universities = $scope.allUni;
@@ -57,7 +57,7 @@ myApp.controller('myCtrl', function ($scope, $filter, $http) {
 
     function getUniversity() {
         $scope.$emit('LOAD')
-        $http.get(("http://universities.hipolabs.com/search?country=".concat($scope.c)))
+        $http.get(("https://cors-anywhere.herokuapp.com/http://universities.hipolabs.com/search?country=".concat($scope.c)))
             .then(function (response) {
                  $scope.universities = response.data;
                  $scope.$emit('UNLOAD');
