@@ -1,2 +1,5 @@
 # Universities-of-the-world
-This project give you countries and their universities
+With this project you can have the name and website of their universities
+****************************************************************************
+
+NOTICE: You must install 'Allow-Control-Allow-Origin' Chrome Extension
