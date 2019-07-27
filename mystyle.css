@@ -450,7 +450,7 @@ border:#CDDC39 solid 1px;
   height:200px;
 }
 
-.list .icon{
+ .icon .list{
   flex-direction:column;
   align-items:center;
   
