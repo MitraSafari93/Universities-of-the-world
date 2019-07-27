@@ -68,56 +68,32 @@ myApp.controller('myCtrl', function ($scope, $filter, $http) {
     }
    
      
-    setOrderProperty = function(property) {
-        // if(property==='name')
-        // {
-            
-        //     if ($scope.orderName === property) {
-        //         $scope.orderName = '-' + property;
-        //         $scope.nameSortClass = 'glyphicon glyphicon-menu-down';
-        //     } else {
-        //         $scope.orderName = property;
-        //         $scope.nameSortClass = 'glyphicon glyphicon-menu-up';
-        //     } 
-        //     $scope.orderProperty = $scope.orderName;
-        // }
-        // else
-        // {
-        //     if ($scope.orderCountry === property) {
-        //         $scope.orderCountry = '-' + property;
-        //         $scope.countrySortClass = 'glyphicon glyphicon-menu-down';
-        //     } else {
-        //         $scope.orderCountry = property;
-        //         $scope.countrySortClass = 'glyphicon glyphicon-menu-up';
-        //     } 
-        //     $scope.orderProperty = $scope.orderCountry;
-        // }
-        ////////////////////////////////////////////
-        if(property==='name'){
+    $scope.setOrderProperty = function(property) {
+         if(property==='name')
+        {
             if ($scope.orderName === property) {
-                         $scope.orderName = '-' + property;
-                         $scope.nameSortClass = 'glyphicon glyphicon-menu-down';
-                         sort(universities).desc(u => u.name);
-                     } else {
-                         $scope.orderName = property;
-                         $scope.nameSortClass = 'glyphicon glyphicon-menu-up';
-                         $scope.universities.sort(universities).asc(u=>u.name)
-                     } 
-                //     $scope.orderProperty = $scope.orderName;
+                 $scope.orderName = '-' + property;
+                 $scope.nameSortClass = 'glyphicon glyphicon-menu-down';
+            } else {
+                $scope.orderName = property;
+                $scope.nameSortClass = 'glyphicon glyphicon-menu-up';
+            } 
+            $scope.orderProperty = $scope.orderName;
         }
-        else {
+        else
+        {
             if ($scope.orderCountry === property) {
-                         $scope.orderCountry = '-' + property;
-                         $scope.countrySortClass = 'glyphicon glyphicon-menu-down';
-                         sort(universities).desc(u=>u.country)
-                     } else {
-                         $scope.orderCountry = property;
-                         $scope.countrySortClass = 'glyphicon glyphicon-menu-up';
-                         sort(universities).asc(u=>u.country)
-                     } 
+                $scope.orderCountry = '-' + property;
+                $scope.countrySortClass = 'glyphicon glyphicon-menu-down';
+            } else {
+                $scope.orderCountry = property;
+                $scope.countrySortClass = 'glyphicon glyphicon-menu-up';
+            } 
+            $scope.orderProperty = $scope.orderCountry;
         }
-    }
+     }
 
+    
     $scope.changeClass = function(input){
             $scope.modelShowClass = input;
     }
@@ -140,7 +116,6 @@ myApp.filter('startFrom', function () {
         return input.slice(start);
     }
 });
-
 
 
 function myFunction() {

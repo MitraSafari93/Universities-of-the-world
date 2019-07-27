@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="MyAngular.js"></script>
 
@@ -15,6 +16,7 @@
     <link rel="bootstrap">
     <link rel="Script/angularjs">
     <link rel="stylesheet" href="mystyle.css">
+    <script src="MyScript.js"></script>
 </head>
 
 <body ng-app="myApp" ng-controller="appController">
@@ -45,7 +47,7 @@
                         Sort by:
                         <thead>
                             <tr>
-                                <th> &nbsp; Name<a click="setOrderProperty('name')">
+                                <th> &nbsp; Name<a ng-click="setOrderProperty('name')">
                                         <span ng-click="collapsed = !collapsed " ng-model="collapsed"
                                             ng-class="nameSortClass"></span>
                                     </a></th>
@@ -58,10 +60,10 @@
                     </div>
                     <div class="modelShow-body">
                         <a class="modelShow">
-                            <span class="glyphicon glyphicon-th-list" ng-click="changeClass('list')"></span>
+                            <span class="glyphicon glyphicon-th-list" ></span>
                         </a>
                         <a class="modelShow">
-                            <span class="glyphicon glyphicon-th" ng-click="changeClass('')"></span>
+                            <span class="glyphicon glyphicon-th"></span>
                         </a>
                     </div>
                 </div>
@@ -71,21 +73,21 @@
                             <span>Loading...</span>
                         </div>
                     </div>
-                    <div class=" flex-container-main" ng-class="modelShowClass">
+                    <div class=" flex-container-main modelShowClass">
 
 
                         <div class="uniContainer"
-                            ng-repeat=" x in universities   | startFrom:(currentPage-1)*numPerPage | limitTo:numPerPage track by $index">
-                            <div class="iconUniContainer" ng-class="modelShowClass" >
-                                <div class="icon" ng-class="modelShowClass">
+                            ng-repeat=" x in universities |orderBy:orderProperty  | startFrom:(currentPage-1)*numPerPage | limitTo:numPerPage track by $index">
+                            <div class="iconUniContainer modelShowClass" >
+                                <div class="icon  modelShowClass">
                                     <span class="glyphicon glyphicon-star"></span>
                                     Favorite
                                 </div>
-                                <div class="icon" ng-class="modelShowClass">
+                                <div class="icon modelShowClass">
                                     <span class="glyphicon glyphicon-new-window"></span>
                                     Detail
                                 </div>
-                                <div class="icon" ng-class="modelShowClass">
+                                <div class="icon modelShowClass">
                                     <span class="glyphicon glyphicon-align-justify"></span>
                                     Website
                                 </div>
