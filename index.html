@@ -33,7 +33,7 @@
                             <div class="form-group has-feedback">
                                 <label for="search" class="sr-only">Search</label>
                                 <input type="text" class="form-control" name="search" id="search" placeholder="search"
-                                    ng-model="q.name">
+                                    ng-model="q.name"  ng-model-options="{ debounce: 2000 }" >
                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
                         </form>
